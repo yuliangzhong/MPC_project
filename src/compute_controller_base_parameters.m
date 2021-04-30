@@ -24,7 +24,7 @@ function param = compute_controller_base_parameters
     b_ref = [25;-42;-18.5];
     C_ref = eye(3);
     T_sp = b_ref;
-    p_sp = B\(Bd*d - (eye(3)-A)*T_sp);
+    p_sp = -B\(Bd*d - (eye(3)-A)*T_sp);
     
     % Task 4: constraints for delta formulation
     Pcons = building.InputConstraints;
