@@ -3,28 +3,34 @@ function param = compute_controller_base_parameters
     load('system/parameters_building');
     
     % Task 1: continuous time dynamics in state space form
-    Ac = ...
-    Bc = ...
-    Bdc = ...
-    d = ...
+    Ac = [(-building.a_F1_VC - building.a_F2_VC - building.a_Env_VC)/building.m_VC, building.a_F1_VC/building.m_VC, building.a_F2_VC/building.m_VC;
+           building.a_F1_VC/building.m_F1, (-building.a_F1_VC - building.a_F2_F1)/building.m_F1, building.a_F2_F1/building.m_F1;
+           building.a_F2_VC/building.m_F2, building.a_F2_F1/building.m_F2,(-building.a_F2_VC - building.a_F2_F1)/building.m_F2];
+    Bc = [building.b_11/building.m_VC, building.b_12/building.m_VC, building.b_13/building.m_VC;
+          building.b_21/building.m_F1, building.b_22/building.m_F1, building.b_23/building.m_F1;
+          building.b_31/building.m_F2, building.b_32/building.m_F2, building.b_33/building.m_F2];
+    Bdc = diag([1/building.m_VC, 1/building.m_F1, 1/building.m_F2]);
+    d = [building.d_VC+building.a_Env_VC*building.T_Env;
+         building.d_F1;
+         building.d_F2];
     
     % Task 2: discretization
     Ts = 60;
-    A = ...
-    B = ...
-    Bd = ...
+    A = eye(3)+Ac*Ts;
+    B = Bc*Ts;
+    Bd = Bdc*Ts;
     
     % Task 3: set point computation
-    b_ref = ...
-    C_ref = ...
-    T_sp = ...
-    p_sp = ...
+    b_ref = [25;-42;-18.5];
+    C_ref = eye(3);
+    T_sp = b_ref;
+    p_sp = B\(Bd*d - (eye(3)-A)*T_sp);
     
     % Task 4: constraints for delta formulation
     Pcons = building.InputConstraints;
     Tcons = building.StateConstraints;
-    Ucons = ...
-    Xcons = ...
+    Ucons = Pcons - [p_sp,p_sp];
+    Xcons = Tcons - [T_sp,T_sp];
     
     % put everything together
     param.A = A;
