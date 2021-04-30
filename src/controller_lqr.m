@@ -18,7 +18,9 @@ if isempty(param)
 end
 
 % compute control action
-% p = ...
+[K,S,e] = dlqr(param.A,param.B,Q,R);
+p = param.p_sp - K*(T-param.T_sp); % Du = -K*Dx;
+
 end
 
 function param = init(Q, R)
