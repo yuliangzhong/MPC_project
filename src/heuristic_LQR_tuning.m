@@ -12,13 +12,14 @@
 function [Q, R] = heuristic_LQR_tuning(n_samples, T0, T_sp, scen)
 
 % define a figure
-figure; set(gcf, 'WindowStyle' ,'docked'); grid on; hold on
+figure(6); set(gcf, 'WindowStyle' ,'docked'); grid on; hold on
 xlabel('Energy consumption [kWh]'); 
 ylabel('Relative norm of steady state deviation');
 % define R and bestQ
 R = eye(3); Q = eye(3);
 % define dT_rel
 dT_rel = 999;
+pwr = 0;
 
 % Loop
 for index = 1:n_samples
@@ -37,8 +38,14 @@ for index = 1:n_samples
     if power_sum<16
         if dT_relative<dT_rel
             dT_rel = dT_relative;
+            pwr = power_sum;
             Q = Q_ind;
+            disp(['Index = ' num2str(index)]);
+            disp(Q);
         end
     end
 end
+scatter(pwr,dT_rel,'green','d','filled');
+save("Q_sim.mat",'Q');
+save("R_sim.mat",'R');
 end
