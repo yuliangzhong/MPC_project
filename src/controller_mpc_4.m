@@ -38,8 +38,8 @@ U = sdpvar(repmat(nu,1,N-1),ones(1,N-1),'full');
 X = sdpvar(repmat(nx,1,N),ones(1,N),'full');
 eps = sdpvar(repmat(nx,1,N),ones(1,N),'full');
 
-v = 1e10;
-E = eye(3);
+v = 1;
+E = eye(3); % punish T_F2 violation more ???
 
 Ax=[eye(3);-eye(3)];
 bx=[param.Xcons(:,2); -param.Xcons(:,1);];
@@ -48,15 +48,15 @@ bu=[param.Ucons(:,2);-param.Ucons(:,1)];
 [A_f,b_f] = compute_X_LQR(Q,R);
 
 objective = 0;
-constraints = eps{1}>=0;
+constraints = [];
 for k = 1:N-1
     constraints = [constraints, X{k+1} == param.A*X{k} + param.B*U{k}];
     constraints = [constraints, Ax*X{k+1} <= bx + [eps{k+1};eps{k+1}]];
-    constraints = [constraints, eps{k+1} >= 0];
+    constraints = [constraints, eps{k} >= 0];
     constraints = [constraints, Au*U{k} <= bu];
-    objective = objective + X{k}'*Q*X{k} + U{k}'*R*U{k}+ v * norm(eps{k},1) + eps{k}'*E*eps{k};
+    objective = objective + X{k}'*Q*X{k} + U{k}'*R*U{k}+ v * norm(eps{k},Inf) + eps{k}'*E*eps{k};
 end
-objective = objective + X{end}'*S*X{end} + v * norm(eps{end},1) + eps{end}'*E*eps{end};
+objective = objective + X{end}'*S*X{end} + v * norm(eps{end},Inf) + eps{end}'*E*eps{end};
 constraints = [constraints, A_f*X{end} <= b_f];
 
 x0 = sdpvar(3,1);

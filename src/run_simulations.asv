@@ -75,9 +75,9 @@ T0_2 = T_sp + [1.5;2.75;-0.25];
 % simulate_building(T0_1, @controller_mpc_3, Q, R, scen2); % Task17
 % figure(18); set(gcf, 'WindowStyle' ,'docked');
 % simulate_building(T0_1, @controller_mpc_4, Q, R, scen2); % Task18
-% figure(19); set(gcf, 'WindowStyle' ,'docked');
-% simulate_building(T0_1, @controller_mpc_3, Q, R, scen1); % Task19-1
-% simulate_building(T0_1, @controller_mpc_4, Q, R, scen1); % Task19-2
+figure(19); set(gcf, 'WindowStyle' ,'docked');
+simulate_building(T0_1, @controller_mpc_3, Q, R, scen1); % Task19-1
+simulate_building(T0_1, @controller_mpc_4, Q, R, scen1); % Task19-2
 % figure(20); set(gcf, 'WindowStyle' ,'docked');
 % d = zeros(3,scen2.Nbar + 30);
 % d(1,36) = -1e4; d(1,50) = 1e4;
