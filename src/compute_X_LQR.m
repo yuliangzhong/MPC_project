@@ -18,7 +18,7 @@ function [A_x, b_x] = compute_X_LQR(Q, R)
     Umax = param.Ucons(:,2);
     Umin = param.Ucons(:,1);
     Xp = Polyhedron('A',[eye(3);-eye(3);K;-K;],'b',[Xmax; -Xmin; Umax; -Umin;]);
-    figure(9); hold on; grid on;
+    % figure(9);hold on; grid on;
     sys_LQR.x.with('setConstraint');
     sys_LQR.x.setConstraint = Xp;
     InvSetLQR = sys_LQR.invariantSet();

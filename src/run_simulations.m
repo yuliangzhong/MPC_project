@@ -1,6 +1,8 @@
 %% Init
 clear all
 close all
+clear;
+clc;
 addpath(genpath(cd));
 rng(1234)
 load('system/parameters_scenarios.mat')
@@ -45,21 +47,37 @@ T0_2 = T_sp + [1.5;2.75;-0.25];
 % J0_2 = (T0_2-T_sp)'*S*(T0_2-T_sp);
 % disp(J0_1)
 % disp(J0_2)
-% Task11
-figure(11); set(gcf, 'WindowStyle' ,'docked');
-clear controller_mpc_1;
-simulate_building(T0_1, @controller_mpc_1, Q, R, scen1); % Task11-1
-simulate_building(T0_2, @controller_mpc_1, Q, R, scen1); % Task11-2
+% % Task11
+% figure(11); set(gcf, 'WindowStyle' ,'docked');
+% clear controller_mpc_1;
+% [~,~,J1t1] = simulate_building(T0_1, @controller_mpc_1, Q, R, scen1); % Task11-1
+% [~,~,J1t2] = simulate_building(T0_2, @controller_mpc_1, Q, R, scen1); % Task11-2
+
 %% MPC with guarantees
-disp('MPC with guarantees');
+% disp('MPC with guarantees');
+% figure(13); set(gcf, 'WindowStyle' ,'docked');
+% clear controller_mpc_2;
+% [~,~,J2t1] = simulate_building(T0_1, @controller_mpc_2, Q, R, scen1); % Task13-1
+% [~,~,J2t2] = simulate_building(T0_2, @controller_mpc_2, Q, R, scen1); % Task13-2
+% 
+% figure(14); set(gcf, 'WindowStyle' ,'docked');
+% clear controller_mpc_3;
+% [~,~,J3t1] = simulate_building(T0_1, @controller_mpc_3, Q, R, scen1); % Task14-1
+% [~,~,J3t2] = simulate_building(T0_2, @controller_mpc_3, Q, R, scen1); % Task14-2
 
-
-
+% % Task15 ???
+% disp(['opt costs of T0_1 = ' num2str(sum(J1t1)) ',   ' num2str(sum(J2t1)) ',   ' num2str(sum(J3t1))])
+% disp(['opt costs of T0_2 = ' num2str(sum(J1t2)) ',   ' num2str(sum(J2t2)) ',   ' num2str(sum(J3t2))])
 
 %% Soft-constrained MPC
 disp('Soft-constrained MPC');
-
-
+% figure(17); set(gcf, 'WindowStyle' ,'docked');
+% simulate_building(T0_1, @controller_mpc_3, Q, R, scen2); % Task17
+figure(18); set(gcf, 'WindowStyle' ,'docked');
+simulate_building(T0_1, @controller_mpc_4, Q, R, scen2); % Task18
+% figure(19); set(gcf, 'WindowStyle' ,'docked');
+% simulate_building(T0_1, @controller_mpc_3, Q, R, scen1); % Task19-1
+% simulate_building(T0_1, @controller_mpc_4, Q, R, scen1); % Task19-2
 
 
 %% Offset-free MPC
