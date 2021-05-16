@@ -14,10 +14,11 @@ function p = controller_mpc_5(Q,R,T,N,d)
 % controller variables
 persistent param yalmip_optimizer
 
-% initialize controller, if not done already
-if isempty(param)
-    [param, yalmip_optimizer] = init(Q,R,N,d);
-end
+% % initialize controller, if not done already
+% if isempty(param)
+%     [param, yalmip_optimizer] = init(Q,R,N,d);
+% end
+[param, yalmip_optimizer] = init(Q,R,N,d);
 
 %% evaluate control action by solving MPC problem
 [u_mpc,errorcode] = yalmip_optimizer(T-param.T_sp);
@@ -52,7 +53,7 @@ bu=[param.Ucons(:,2);-param.Ucons(:,1)];
 objective = 0;
 constraints = [];
 for k = 1:N-1
-    constraints = [constraints, X{k+1} == param.A*X{k} + param.B*U{k} + d(:,k)];
+    constraints = [constraints, X{k+1} == param.A*X{k} + param.B*U{k} + param.Bd*d(:,k)];
     constraints = [constraints, Ax*X{k+1} <= bx + [eps{k+1};eps{k+1}]];
     constraints = [constraints, eps{k} >= 0];
     constraints = [constraints, Au*U{k} <= bu];
@@ -62,6 +63,9 @@ objective = objective + X{end}'*S*X{end} + v * norm(eps{end},Inf) + eps{end}'*E*
 constraints = [constraints, A_f*X{end} <= b_f];
 
 x0 = sdpvar(3,1);
+
+%T0 = sdpvar(nx,1,'full');
+
 constraints = [constraints, X{1} == x0];
 
 ops = sdpsettings('verbose',0,'solver','quadprog');

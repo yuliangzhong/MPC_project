@@ -22,7 +22,7 @@ function [A_x, b_x] = compute_X_LQR(Q, R)
     sys_LQR.x.with('setConstraint');
     sys_LQR.x.setConstraint = Xp;
     InvSetLQR = sys_LQR.invariantSet();
-    InvSetLQR.plot(), alpha(0.25), title('Invariant Set under LQR Control'), xlabel('x_1'), ylabel('x_2'),zlabel('x_3')
+    % InvSetLQR.plot(), alpha(0.25), title('Invariant Set under LQR Control'), xlabel('DT_vc'), ylabel('DT_1'),zlabel('DT_2')
     A_x = InvSetLQR.A;
     b_x = InvSetLQR.b;
 end

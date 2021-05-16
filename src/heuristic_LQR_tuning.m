@@ -35,14 +35,12 @@ for index = 1:n_samples
     else
         scatter(power_sum, dT_relative, 'green');
     end
-    if power_sum<16
-        if dT_relative<dT_rel
-            dT_rel = dT_relative;
-            pwr = power_sum;
-            Q = Q_ind;
-            disp(['Index = ' num2str(index)]);
-            disp(Q);
-        end
+    if ~T_v && power_sum<16 && dT_relative<dT_rel
+        dT_rel = dT_relative;
+        pwr = power_sum;
+        Q = Q_ind;
+        disp(['Index = ' num2str(index)]);
+        disp(Q);
     end
 end
 scatter(pwr,dT_rel,'green','d','filled');

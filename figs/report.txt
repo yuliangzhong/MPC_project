@@ -1,0 +1,19 @@
+Describe and interpret what you can see in T6-1/T6-2
+
+What qualitative influences do changes of the diagonal elements in Q and R have? (T7)
+
+Discuss about T8 result
+
+What can you conclude from the T9 plot with regards to state and constraint satisfaction?
+
+Compare difference between T11 and T7-8
+
+Why is the origin an asymptotically stable equilibrium point for the resulting closed-loop system, given that (E8) is feasible for x(0)? 
+
+Compare the closed-loop trajectories as well as the optimization costs J_MPC for your three MPC controllers on T (0) = T(1)_init 
+and T (0) = T(2)_init. Discuss the differences.
+
+Question 16
+
+
+

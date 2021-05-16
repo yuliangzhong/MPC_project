@@ -1,13 +1,17 @@
-MPC project
+# MPC project
 
-1. run install_mpt.m (already done)
-2. model and discretize it (T1-4) "compute_controller_base_parameters.m"
-3. simulate open-loop system without control (T5) "run_simulations.m"
-4. implement unconstrained infinite horizon LQR controller (T6) "controller_lqr.m"
-5. tune Q by random sampling (T6) "heuristic_LQR_tuning.m"
-6. simulate LQR (T6)  "run_simulations.m"
-7. simulate LQR (T7-8) "run_simulations.m"
-8. computeXLQR
-9. run_sim
-10. ctr_mpc_1
+## Introduction
+In this Model Predictive Control (MPC) project, we implement a variety of controllers for temperature regulation of a vaccination center.
+
+More details, check "instructions.pdf".
+
+## Tasks
+
+1. Build a model and discretize it. Simulate it without any controller.
+2. Unconstrained LQR controller for LTI systems.
+3. Compute initial constraints for x(0)_LQR.
+4. Basic MPC implementation.
+5. MPC with theoretical closed loop guarantees (feasibility and stability) 
+   (zero terminal; terminate in LQR feasible set).
+6. Soft constraint MPC.
 
