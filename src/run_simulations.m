@@ -39,8 +39,8 @@ T0_2 = T_sp + [1.5;2.75;-0.25];
 % clear controller_lqr;
 % simulate_building(T0_2, @controller_lqr, Q, R, scen1); % Task8
 %% From LQR to MPC
-% disp('First MPC'); 
-% [A_x, b_x] = compute_X_LQR(Q, R);
+disp('First MPC'); 
+[A_x, b_x] = compute_X_LQR(Q, R);
 % % Task10
 % [K,S,e] = dlqr(param.A, param.B, Q, R);
 % J0_1 = (T0_1-T_sp)'*S*(T0_1-T_sp);
@@ -65,7 +65,7 @@ T0_2 = T_sp + [1.5;2.75;-0.25];
 % [~,~,J3t1] = simulate_building(T0_1, @controller_mpc_3, Q, R, scen1); % Task14-1
 % [~,~,J3t2] = simulate_building(T0_2, @controller_mpc_3, Q, R, scen1); % Task14-2
 
-% % Task15 ???
+% % Task15 
 % disp(['opt costs of T0_1 = ' num2str(sum(J1t1)) ',   ' num2str(sum(J2t1)) ',   ' num2str(sum(J3t1))])
 % disp(['opt costs of T0_2 = ' num2str(sum(J1t2)) ',   ' num2str(sum(J2t2)) ',   ' num2str(sum(J3t2))])
 
@@ -82,19 +82,19 @@ T0_2 = T_sp + [1.5;2.75;-0.25];
 % clear controller_mpc_4;
 % simulate_building(T0_1, @controller_mpc_3, Q, R, scen1); % Task19-1
 % simulate_building(T0_1, @controller_mpc_4, Q, R, scen1); % Task19-2
-figure(20); set(gcf, 'WindowStyle' ,'docked');
-d = zeros(3,scen2.Nbar + 30);
-d(1,36:50) = -1e4;
-d(2,37:43) = 5e3;
-d(3,45:49) = 1.9e3;
-clear controller_mpc_5;
-simulate_building(T0_1, @controller_mpc_5, Q, R, scen2,1,30,d); % Task20
+% figure(20); set(gcf, 'WindowStyle' ,'docked');
+% d = zeros(3,scen2.Nbar + 30);
+% d(1,36:50) = -1e4;
+% d(2,37:43) = 5e3;
+% d(3,45:49) = 1.9e3;
+% clear controller_mpc_5;
+% simulate_building(T0_1, @controller_mpc_5, Q, R, scen2,1,30,d); % Task20
 
 %% Offset-free MPC
-disp('Offset-free MPC');
+% disp('Offset-free MPC');
 
 
 
 
 %% Comparison using forces
-disp('MPC Implementation with FORCES Pro');
+% disp('MPC Implementation with FORCES Pro');
