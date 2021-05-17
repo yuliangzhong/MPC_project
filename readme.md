@@ -14,4 +14,5 @@ More details, check "instructions.pdf".
 5. MPC with theoretical closed loop guarantees (feasibility and stability) 
    (zero terminal; terminate in LQR feasible set).
 6. Soft constraint MPC.
+7. Offset MPC for constant unknown disturbance.
 

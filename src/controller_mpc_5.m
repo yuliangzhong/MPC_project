@@ -63,9 +63,6 @@ objective = objective + X{end}'*S*X{end} + v * norm(eps{end},Inf) + eps{end}'*E*
 constraints = [constraints, A_f*X{end} <= b_f];
 
 x0 = sdpvar(3,1);
-
-%T0 = sdpvar(nx,1,'full');
-
 constraints = [constraints, X{1} == x0];
 
 ops = sdpsettings('verbose',0,'solver','quadprog');

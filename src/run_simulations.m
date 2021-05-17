@@ -39,8 +39,8 @@ T0_2 = T_sp + [1.5;2.75;-0.25];
 % clear controller_lqr;
 % simulate_building(T0_2, @controller_lqr, Q, R, scen1); % Task8
 %% From LQR to MPC
-disp('First MPC'); 
-[A_x, b_x] = compute_X_LQR(Q, R);
+% disp('First MPC'); 
+% [A_x, b_x] = compute_X_LQR(Q, R);
 % % Task10
 % [K,S,e] = dlqr(param.A, param.B, Q, R);
 % J0_1 = (T0_1-T_sp)'*S*(T0_1-T_sp);
@@ -92,7 +92,10 @@ disp('First MPC');
 
 %% Offset-free MPC
 % disp('Offset-free MPC');
-
+% figure(23); set(gcf, 'WindowStyle' ,'docked');
+% clear controller_mpc_3; clear controller_mpc_6;
+% simulate_building(T0_1, @controller_mpc_3, Q, R, scen3); % Task23-1
+% simulate_building(T0_1, @controller_mpc_6, Q, R, scen3); % Task23-2
 
 
 
