@@ -1,0 +1,1 @@
+% Dump tool constants for internal use.

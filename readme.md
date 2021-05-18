@@ -5,7 +5,12 @@ In this Model Predictive Control (MPC) project, we implement a variety of contro
 
 More details, check "instructions.pdf".
 
-## Tasks
+## How to start
+1. git clone (or fork)
+2. install MPT & Yalmip (follow instructions in "instructions.pdf")
+3. run "run_simulation.m" in /src
+
+## Workflow
 
 1. Build a model and discretize it. Simulate it without any controller.
 2. Unconstrained LQR controller for LTI systems.
@@ -15,4 +20,8 @@ More details, check "instructions.pdf".
    (zero terminal; terminate in LQR feasible set).
 6. Soft constraint MPC.
 7. Offset MPC for constant unknown disturbance.
+
+## Figures and results
+
+check "MPC_report.pdf" for details.
 
