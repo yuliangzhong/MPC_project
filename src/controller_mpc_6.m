@@ -32,7 +32,7 @@ else
     % Find L, s.t. spec[A-LC] = p, ->i.e. find L', s.t. spec[A'-C'*L'] = p
     % i.e. L'= place(A',C',p)
     L = place(A_aug', C_aug', poles)';
-    TD_k = A_aug*[T_hat;d_hat] + B_aug*p_last + L*(T - C_aug*[T_hat;d_hat]); % y(k) = T
+    TD_k = A_aug*[T_hat;d_hat] + B_aug*p_last + L*(T - C_aug*[T_hat;d_hat]); % y(k-1) = T
     T_hat = TD_k(1:3);
     d_hat = TD_k(4:6);
 end
