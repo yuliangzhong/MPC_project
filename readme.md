@@ -20,8 +20,13 @@ More details, check "instructions.pdf".
    (zero terminal; terminate in LQR feasible set).
 6. Soft constraint MPC.
 7. Offset MPC for constant unknown disturbance.
+8. MPC and C compiler (with FORCES Pro).
 
 ## Figures and results
 
 check "MPC_report.pdf" for details.
+
+## Archive
+
+In /archive, lecture notes and summary of class named "Model Predictive Control" in ETH Zurich are provided for reference.
 
