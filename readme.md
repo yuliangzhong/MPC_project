@@ -24,6 +24,7 @@ More details, check "instructions.pdf".
 
 ## Figures and results
 
+check /figs for figures.
 check "MPC_report.pdf" for details.
 
 ## Archive
