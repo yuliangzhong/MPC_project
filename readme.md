@@ -3,6 +3,8 @@
 ## Introduction
 In this Model Predictive Control (MPC) project, we implement a variety of controllers for temperature regulation of a vaccination center.
 
+![situation](https://github.com/yuliangzhong/MPC_project/blob/master/figs/0.png)
+
 More details, check "instructions.pdf".
 
 ## How to start
