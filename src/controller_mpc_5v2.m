@@ -45,8 +45,8 @@ function [param, yalmip_optimizer] = init(Q,R,N)
     Xcons=param.Xcons;
 
     d = sdpvar(repmat(nx,1,N),ones(1,N),'full');
-    v=1000000;%linear penalty for epsilon
-    S=1000000*eye(3);%quadratic penalty for epsilon
+    v=1;%linear penalty for epsilon
+    S=eye(3);%quadratic penalty for epsilon
     
     constraints=[X{1}==T0];
     objective = 0;

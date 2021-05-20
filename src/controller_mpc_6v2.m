@@ -23,7 +23,7 @@ if isempty(param)
 end
 
 % evaluate control action by solving MPC problem
-[u_mpc,errorcode] = yalmip_optimizer(T-Xs,Xs,Us);
+[u_mpc,errorcode] = yalmip_optimizer(x_hat-Xs,Xs,Us);
 if (errorcode ~= 0)
     warning('MPC6 infeasible');
 end
