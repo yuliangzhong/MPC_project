@@ -1,8 +1,12 @@
 %% Init
+
+% annotate below when testing Task 24!!!
 clear all
 close all
 clear;
 clc;
+% annotate above when testing Task 24!!!
+
 addpath(genpath(cd));
 rng(1234)
 load('system/parameters_scenarios.mat')
@@ -15,6 +19,7 @@ load('system/parameters_scenarios.mat')
 % [T,~,~,t] = simulate_building(T0_example,@controller_example);
 
 %% Config here
+
 param = compute_controller_base_parameters;
 load('Q_sim.mat')
 load('R_sim.mat')
@@ -124,9 +129,9 @@ global ifplot9; % if plot in task 9
 
 %% Comparison using forces
 
-% Task 24
-clear controller_mpc_1_forces;
-[~,~,~,t_sim_forces] = simulate_building(T0_2, @controller_mpc_1_forces, Q, R, scen1);
-clear controller_mpc_1;
-[~,~,~,t_sim] = simulate_building(T0_2, @controller_mpc_1, Q, R, scen1);
-disp(['t_sim_forces = ' num2str(t_sim_forces) ', t_sim = ' num2str(t_sim)]);
+% % Task 24
+% % DO NOT clear controller_mpc_1_forces !!
+% [~,~,~,t_sim_forces] = simulate_building(T0_2, @controller_mpc_1_forces, Q, R, scen1);
+% % DO NOT clear controller_mpc_1 !!
+% [~,~,~,t_sim] = simulate_building(T0_2, @controller_mpc_1, Q, R, scen1);
+% disp(['t_sim_forces = ' num2str(t_sim_forces) ', t_sim = ' num2str(t_sim)]);

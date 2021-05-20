@@ -17,5 +17,5 @@ Problem size: 177 variables, 90 equality and 348 inequality constraints in 30 st
     9  9.9e-017  9.1e-013  +1.8294e+007  +1.8294e+007  +1.7e-005  9.1e-013  4.8e-008
 
 OPTIMAL (within RESEQ=1.0e-006, RESINEQ=1.0e-006, (R)DGAP=(1.0e-006)1.0e-004, MU=1.0e-006).
-Solve time: 0.417 ms (9 iterations)
+Solve time: 0.278 ms (9 iterations)
 
